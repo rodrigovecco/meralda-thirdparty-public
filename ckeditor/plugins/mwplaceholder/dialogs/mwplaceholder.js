@@ -51,6 +51,7 @@ CKEDITOR.dialog.add( 'mwplaceholder', function( editor ) {
 							var _this=this;
 							if(editor.config.mw){
 								if(editor.config.mw.placeholderman){
+									console.log("SHOW PLACEHOLDER INPUTS");
 									editor.config.mw.placeholderman.onShowHtml(editor,_this);
 								}
 							}
