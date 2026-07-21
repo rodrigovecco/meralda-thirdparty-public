@@ -61,16 +61,10 @@ CropAvatar.prototype = {
     },
     submitFrm: function () {
 		// Loading state: disable buttons, show spinner
-		this.$avatarSave.prop('disabled', true).text('Subiendo...');
+		this.$avatarSave.prop('disabled', true);
 		this.$avatarBtns.prop('disabled', true).fadeTo(200, 0.4);
 
-		// Inject spinner if loading div is empty
-		var $ld = this.$loading;
-		if ($ld.length && !$ld.children().length) {
-			$ld.html('<span class="spinner-border spinner-border-sm" role="status"></span>'
-				+ ' <span class="ml-2">Subiendo imagen...</span>');
-		}
-		mw_show_obj($ld);
+		mw_show_obj(this.$loading);
 		this.$avatarForm.submit();
 		return false;
     },
