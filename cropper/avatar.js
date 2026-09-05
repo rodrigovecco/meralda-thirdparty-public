@@ -171,7 +171,7 @@ CropAvatar.prototype = {
       var data;
 
       if (this.active) {
-        data = $(e.target).data();
+        data = $(e.currentTarget).data();
 		this.cmd(data);
       }
     },
