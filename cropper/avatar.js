@@ -16,7 +16,7 @@ function CropAvatar($element,params) {
     this.$avatarInput = this.$avatarForm.find('.avatar-input');
     this.$avatarSave = this.$avatarForm.find('.avatar-save');
 	mw_hide_obj( this.$avatarSave);
-	
+
     this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
 	this.$avatarBtns.hide();
 
@@ -36,7 +36,7 @@ CropAvatar.prototype = {
     },
 	consolelog: function (data) {
 		if(window.console){
-			window.console.log(data);	
+			window.console.log(data);
 		}
 	},
 
@@ -68,7 +68,7 @@ CropAvatar.prototype = {
 		this.$avatarForm.submit();
 		return false;
     },
-	
+
 
     initTooltip: function () {
       this.$avatarView.tooltip({
@@ -126,7 +126,7 @@ CropAvatar.prototype = {
 
     submit: function () {
       if (!this.$avatarSrc.val() && !this.$avatarInput.val()) {
-		  
+
         return false;
       }
     },
@@ -143,7 +143,7 @@ CropAvatar.prototype = {
 		//console.log("ncbD",ncbD);
 		this.$img.cropper('setCropBoxData',{width:canD.width});
 		this.$img.cropper('setCropBoxData',{left:canD.left});
-		
+
 	},
 	cmd_fullH:function(data){
 		if (!this.active) {
@@ -153,19 +153,19 @@ CropAvatar.prototype = {
 		this.$img.cropper('setCropBoxData',{height:canD.height});
 		this.$img.cropper('setCropBoxData',{top:canD.top});
 
-		
+
 	},
-	
+
 	doCmd:function(cod,data){
 		if(!cod){
-			return;	
+			return;
 		}
 		var c="cmd_"+cod;
 		if(!this[c]){
 			return;
 		}
 		this[c](data);
-		
+
 	},
     cmdEvt: function (e) {
       var data;
@@ -216,8 +216,8 @@ CropAvatar.prototype = {
 
     startCropper: function () {
       var _this = this;
-	 
-	  
+
+
 
       if (this.active) {
         this.$img.cropper('replace', this.url);
@@ -246,7 +246,7 @@ CropAvatar.prototype = {
         this.active = true;
       }
     },
-	
+
 
     stopCropper: function () {
       if (this.active) {
