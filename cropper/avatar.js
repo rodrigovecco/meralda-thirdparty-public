@@ -105,6 +105,10 @@ CropAvatar.prototype = {
           file = files[0];
 
           if (this.isImageFile(file)) {
+            if (!this.checkFileSize(file)) {
+              this.$avatarForm.get(0).reset();
+              return;
+            }
             if (this.url) {
               URL.revokeObjectURL(this.url); // Revoke the old one
             }
@@ -212,6 +216,20 @@ CropAvatar.prototype = {
       } else {
         return /\.(jpg|png|gif)$/.test(file);
       }
+    },
+
+    // Reject files larger than the php.ini-derived limit exposed via data attributes.
+    checkFileSize: function (file) {
+      var max = parseInt(this.$avatarInput.attr('data-max-file-size'), 10);
+      if (!max || !file || !file.size) {
+        return true;
+      }
+      if (file.size > max) {
+        var label = this.$avatarInput.attr('data-max-file-size-label') || (max + ' bytes');
+        this.alert('El archivo supera el tamaño máximo permitido (' + label + ').');
+        return false;
+      }
+      return true;
     },
 
     startCropper: function () {
